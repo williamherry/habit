@@ -39,3 +39,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'simple_form'
