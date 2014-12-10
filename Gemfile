@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'simple_form'
+gem 'pry'

@@ -4,13 +4,15 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   validates :username, uniqueness: true
+  validates :username, presence: true
   validates_confirmation_of :password
 
   def self.authenticate(username, password)
     user = User.where(username: username).first
+    return nil unless user
 
     password_hash = BCrypt::Engine.hash_secret(password, user.password_salt)
-    (user && user.password_hash == password_hash) ? user : nil
+    user.password_hash == password_hash ? user : nil
   end
 
   private
