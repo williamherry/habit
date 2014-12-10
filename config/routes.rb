@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/' => 'home#index'
 
   resources :users
+  resources :tasks
 
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"

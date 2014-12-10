@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :login_required, only: [:new, :create]
+
   def create
     #try to authenticate the user - if they authenticate successfully, an instance of the User model is returned
     @user = User.authenticate(params[:user][:username], params[:user][:password])

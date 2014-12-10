@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates_confirmation_of :password
 
+  has_many :tasks
+
   def self.authenticate(username, password)
     user = User.where(username: username).first
     return nil unless user

@@ -11,7 +11,8 @@
     <div class="container">
       <a href="#" class="navbar-brand">Habit</a>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">Home</a></li>
+        <li class="<%= 'active' if params[:controller] == 'tasks' %>"><a href="/tasks">Task</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
