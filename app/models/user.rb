@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def daily_score
+    return 0 if daily_tasks.empty?
     (daily_tasks.where(completed: true).count / daily_tasks.count.to_f * 100).to_i
   end
 
