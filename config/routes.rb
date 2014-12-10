@@ -7,12 +7,16 @@ Rails.application.routes.draw do
 
   get '/' => 'home#index'
 
-  resources :users
-  resources :tasks
-
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy", as: :logout
+
+  resources :users
+  resources :tasks
+  resources :daily_tasks, only: [] do
+    post :complete
+    post :uncomplete
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

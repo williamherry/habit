@@ -1,3 +1,16 @@
 <div class="container">
-  <h1>Welcome to my Website</h1>
+  <div class="main clearfix">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Daily tasks</h1>
+      <span>Today Score: <%= current_user.daily_score %></span>
+      <ul id="daily-tasks">
+        <% @tasks.each do |task| %>
+          <li>
+            <%= check_box_tag '', task.completed?, task.completed?, data: {id: task.id} %>
+            <%= task.task.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
