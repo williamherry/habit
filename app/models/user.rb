@@ -18,9 +18,12 @@ class User < ActiveRecord::Base
     user.password_hash == password_hash ? user : nil
   end
 
-  def daily_score
-    return 0 if daily_tasks.empty?
-    (daily_tasks.where(completed: true).count / daily_tasks.count.to_f * 100).to_i
+  def daily_score(date = Date.today.to_s)
+    return 0 if daily_tasks.where(date: date).empty?
+
+    completed_daily_tasks = daily_tasks.where(date: date, completed: true)
+    all_daily_tasks = daily_tasks.where(date: date)
+    (completed_daily_tasks.count / all_daily_tasks.count.to_f * 100).to_i
   end
 
   private
