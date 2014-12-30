@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     (completed_daily_tasks.count / all_daily_tasks.count.to_f * 100).to_i
   end
 
+  def continuation
+    (Date.today - daily_tasks.first.date.to_date).to_i
+  end
+
   private
 
   def encrypt_password
